@@ -67,7 +67,7 @@ public class ShuntingYard {
         ADD(1),
         SUBTRACT(2),
         MULTIPLY(3),
-        DIVIDE(4),
+        DIVIDE(3),
         POW(5),
         SIN(6);
 

@@ -24,6 +24,7 @@ public class Tree {
 
     public void createTree() {
         StackArray s = new StackArray(queueArray.getSize());
+        int firstItteration=0;
 
         while (!queueArray.isEmpty()) {
             System.out.print("Stack: ");
@@ -38,15 +39,27 @@ public class Tree {
                 s.push(elem);
                 itter++;
             } else {
-                if(itter==2) {
+                System.out.println(firstItteration);
+                if(firstItteration==2) {
                     Node node = new Node(s.pop(), null, null, null);
                     Node node1 = new Node(s.pop(), null, null, null);
                     Node nod = new Node(elem, node1, node, null);
                     topNode = nod;
                     node.setFather(nod);
                     node1.setFather(nod);
+                } else if(s.getSize()>2 && arrayListOfActions.contains(queueArray.peek(ind+1))){
+                    Node node=new Node(s.pop(),null,null,null);
+                    Node node1=new Node(s.pop(),null,null,null);
+                    Node el=new Node(elem,node1,node,null);
+                    node.setFather(el);
+                    node1.setFather(el);
+                    topNode=el;
                 }
-
+                if(hasOnlyOperations(queueArray)){
+                    Node node=new Node(s.pop(),null,null,null);
+                    Node node1=new Node(queueArray.pop(),node,topNode,null);
+                    topNode=node1;
+                }
                  if (arrayListOfActions.contains(elem) && (is2Digits(this.queueArray.peek(ind + 1), this.queueArray.peek(ind + 2), ind))) {
                     root = new Node(this.queueArray.peek(this.queueArray.size - 1), null, null, null);
                     root.setRightSon(topNode);
@@ -65,6 +78,7 @@ public class Tree {
                 s.push(String.valueOf(Operators.calculate(b, a, elem)));
                 */
             }
+            firstItteration++;
         }
 
         System.out.println((String) s.peek());
@@ -85,6 +99,14 @@ public class Tree {
             int int1 = Integer.parseInt((String) str);
         } catch (NumberFormatException e) {
             return false;
+        }
+        return true;
+    }
+    public boolean hasOnlyOperations(QueueArray queueArray){
+        for (int itter = 0; itter < queueArray.size; itter++) {
+            if(StringParser.isDigit(queueArray.peek(itter))){
+                return false;
+            }
         }
         return true;
     }

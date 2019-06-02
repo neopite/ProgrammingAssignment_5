@@ -19,7 +19,7 @@ public class MainTree {
         StackArray s = new StackArray(tokens.getSize());
         Tree tree=new Tree(tokens);
         tree.createTree();
-        System.out.println(tree.topNode.getRightSon().getRightSon().getRightSon().getLeftSon().getValue());
+        System.out.println(tree.topNode.getRightSon().getRightSon().getRightSon().getValue());
 
     }
 }
