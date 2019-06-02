@@ -1,13 +1,17 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class StackArray<E> {
     private int top = -1;
     private E[] arr;
     private int size;
+     int currentSize;
 
     public StackArray(int size) {
         this.size = size;
         this.arr = (E[]) new Object[size];
+        this.currentSize = 0;
     }
 
     public boolean isEmpty() {
@@ -22,7 +26,7 @@ public class StackArray<E> {
         if (this.isFull()) {
             this.resize(this.size * 2);
         }
-
+        currentSize++;
         ++this.top;
         this.arr[this.top] = element;
     }
@@ -30,7 +34,9 @@ public class StackArray<E> {
     public E pop() {
         if (!this.isEmpty()) {
             E elem = this.arr[this.top];
+            this.arr[this.top]=null;
             --this.top;
+            currentSize--;
             return elem;
         } else {
             return null;
@@ -49,7 +55,7 @@ public class StackArray<E> {
         this.size = new_size;
         E[] temp = (E[]) new Object[new_size];
 
-        for(int i = 0; i < this.arr.length; ++i) {
+        for (int i = 0; i < this.arr.length; ++i) {
             temp[i] = this.arr[i];
         }
 
@@ -58,5 +64,18 @@ public class StackArray<E> {
 
     public void clear() {
         this.top = -1;
+    }
+
+    public void printArray() {
+        System.out.println(Arrays.toString(this.arr));
+    }
+
+    public static void main(String[] args) {
+        StackArray<String> stringStackArray=new StackArray<>(2);
+        stringStackArray.push("1");
+        stringStackArray.push("2");
+        System.out.println(stringStackArray.currentSize);
+        System.out.println(stringStackArray.pop());
+        System.out.println(stringStackArray.currentSize);
     }
 }

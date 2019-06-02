@@ -14,11 +14,16 @@ public class Main {
             str = args[0];
         }
 
-        QueueArray<String> tokens = ShuntingYard.toPostfix(str);
+        QueueArray tokens = ShuntingYard.toPostfix(str);
         StackArray s = new StackArray(tokens.getSize());
 
         while(!tokens.isEmpty()) {
+            System.out.print("Stack: ");
+            s.printArray();
+            System.out.print("Queue: ");
+            tokens.print();
             String elem = (String)tokens.pop();
+            System.out.println(elem);
             if (StringParser.isDigit(elem)) {
                 s.push(elem);
             } else if (elem.equals("!")) {
@@ -31,7 +36,8 @@ public class Main {
                 s.push(String.valueOf(Operators.calculate(b, a, elem)));
             }
         }
-
+        System.out.println(s.currentSize);
+        s.printArray();
         System.out.println((String)s.peek());
     }
 }

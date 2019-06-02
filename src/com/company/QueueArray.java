@@ -1,18 +1,19 @@
 package com.company;
 
 
-public class QueueArray<E> {
+public class QueueArray {
     private int first = 0;
     private int last = 0;
-    private int size;
-    private E[] queue;
+    public int size;
+    private String[] queue;
+    public int lastElemPop;
 
     public QueueArray(int size) {
-        this.queue = (E[]) new Object[size];
+        this.queue =new String[size];
         this.size = size;
     }
 
-    public void add(E elem) {
+    public void add(String elem) {
         if (this.last == this.queue.length) {
             this.resize(this.size * 2);
         }
@@ -21,9 +22,11 @@ public class QueueArray<E> {
         ++this.last;
     }
 
-    public E pop() {
+    public String pop() {
         if (!this.isEmpty()) {
-            E elem = this.queue[this.first];
+            String elem = this.queue[this.first];
+            queue[this.first]=null;
+            lastElemPop=first;
             ++this.first;
             return elem;
         } else {
@@ -37,7 +40,7 @@ public class QueueArray<E> {
         int var2 = var1.length;
 
         for(int var3 = 0; var3 < var2; ++var3) {
-            E elem = (E) var1[var3];
+            String elem = (String) var1[var3];
             if (elem != null) {
                 System.out.print(elem + " ");
             }
@@ -51,7 +54,7 @@ public class QueueArray<E> {
     }
 
     private void resize(int new_size) {
-        E[] new_arr = (E[]) new Object[new_size];
+        String[] new_arr = new String [new_size];
 
         for(int i = 0; i < this.queue.length; ++i) {
             new_arr[i] = this.queue[i];
@@ -63,18 +66,17 @@ public class QueueArray<E> {
     public int getSize() {
         return this.size;
     }
+    public String peek(int index){
+        return queue[index];
+    }
 
-    public static void main(String[] args) {
-        QueueArray<Integer> q = new QueueArray(10);
-        System.out.println(q.isEmpty());
-        q.add(5);
-        q.add(7);
-        q.add(8);
-        System.out.println(q.isEmpty());
-        q.pop();
-        q.pop();
-        q.pop();
-        System.out.println(q.isEmpty());
+    public static void main(java.lang.String[] args) {
+
+        QueueArray q = new QueueArray(3);
+        q.add("1");
+        q.add("2");
+        q.add("3");
+        System.out.println(q.peek(q.size-1));
         q.print();
     }
 }

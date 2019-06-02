@@ -24,10 +24,10 @@ public class ShuntingYard {
         return ops.containsKey(sub) && ((ShuntingYard.Operator)ops.get(sub)).precedence >= ((ShuntingYard.Operator)ops.get(op)).precedence;
     }
 
-    public static QueueArray<String> toPostfix(String str) {
+    public static QueueArray toPostfix(String str) {
         ArrayList<String> tokens = StringParser.parseString(str);
         StackArray<String> s = new StackArray(tokens.size());
-        QueueArray<String> q = new QueueArray(tokens.size());
+        QueueArray q = new QueueArray(tokens.size());
         Iterator var4 = tokens.iterator();
 
         while(true) {
