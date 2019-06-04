@@ -1,8 +1,8 @@
-package com.company;
+package com.company.ShutingYard;
 
 
 import java.util.HashMap;
-import com.company.ShuntingYard.Operator;
+import com.company.ShutingYard.ShuntingYard.Operator;
 
 final class ShuntingYard$1 extends HashMap<String, Operator> {
     ShuntingYard$1() {

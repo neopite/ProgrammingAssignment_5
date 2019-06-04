@@ -1,4 +1,4 @@
-package com.company;
+package com.company.ShutingYard;
 
 enum ShuntingYard$Operato {
     ADD(1),

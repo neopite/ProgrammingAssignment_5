@@ -1,4 +1,4 @@
-package com.company;
+package com.company.ShutingYard;
 
 import java.util.Arrays;
 
@@ -51,6 +51,10 @@ public class StackArray<E> {
         return this.size;
     }
 
+    public int getCurrentSize(){
+        return this.currentSize ;
+    }
+
     private void resize(int new_size) {
         this.size = new_size;
         E[] temp = (E[]) new Object[new_size];
@@ -74,8 +78,7 @@ public class StackArray<E> {
         StackArray<String> stringStackArray=new StackArray<>(2);
         stringStackArray.push("1");
         stringStackArray.push("2");
-        System.out.println(stringStackArray.currentSize);
         System.out.println(stringStackArray.pop());
-        System.out.println(stringStackArray.currentSize);
+        System.out.println(stringStackArray.getSize());
     }
 }

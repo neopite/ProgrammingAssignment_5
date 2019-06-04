@@ -1,12 +1,12 @@
 package com.company.TreePackage;
 
 public class Node<E> {
-    private E value;
+    private String value;
     private Node leftSon;
     private Node rightSon;
     private Node father;
 
-    Node(E value,E leftSon,E rightSon,E father){
+    Node(String value,E leftSon,E rightSon,E father){
         this.value=value;
         this.leftSon= (Node) leftSon;
         this.rightSon= (Node) rightSon;
@@ -30,7 +30,12 @@ public class Node<E> {
      Node getFather(){
         return this.father;
     }
-    E getValue(){
+    String getValue(){
         return this.value;
+    }
+    public boolean isLeaf(Node node){
+        if(node.leftSon==null || node.rightSon==null){
+            return true;
+        }else return false;
     }
 }

@@ -1,8 +1,8 @@
 package com.company.TreePackage;
 
-import com.company.QueueArray;
-import com.company.ShuntingYard;
-import com.company.StackArray;
+import com.company.ShutingYard.QueueArray;
+import com.company.ShutingYard.ShuntingYard;
+import com.company.ShutingYard.StackArray;
 
 import java.util.Scanner;
 
@@ -18,8 +18,7 @@ public class MainTree {
         QueueArray tokens = ShuntingYard.toPostfix(str);
         StackArray s = new StackArray(tokens.getSize());
         Tree tree=new Tree(tokens);
-        tree.createTree();
-        System.out.println(tree.topNode.getRightSon().getRightSon().getRightSon().getValue());
+        System.out.println("result : "+ tree.createTree().getRightSon().getLeftSon().getValue());
 
     }
 }
