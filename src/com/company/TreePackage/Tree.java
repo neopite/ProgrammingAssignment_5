@@ -14,7 +14,7 @@ public class Tree {
 
     }
 
-    public Node  createTree() {
+    public Node createTree() {
         int frequency = 0;
         StackArray s = new StackArray(queueArray.getSize());
         Stack<Node> stack = new Stack<>();
@@ -24,12 +24,14 @@ public class Tree {
             queueArray.print();
             String elem = (String) queueArray.pop();
             if (StringParser.isDigit(elem)) {
-                Node node=new Node(elem,null,null,null);
+                Node node = new Node(elem, null, null, null);
                 stack.push(node);
             } else {
-                Node node=stack.pop();
-                Node node1=stack.pop();
-                Node father=new Node(elem,node1,node,null);
+                Node node = stack.pop();
+                Node node1 = stack.pop();
+                Node father = new Node(elem, node1, node, null);
+                node1.setFather(father);
+                node.setFather(father);
                 stack.push(father);
             }
         }
@@ -37,6 +39,14 @@ public class Tree {
         return stack.pop();
     }
 
+    public String bypass(Node node) { //в параметр передаёться дерево(Дерево-Нода)
+        Node node1=node.getRightSon() ;
+        while (node1.getRightSon() != null) {
+            node1=node1.getLeftSon();
+            System.out.println(node1.getValue());
+        }
+        return "True";
+    }
 
 }
 

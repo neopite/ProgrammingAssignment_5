@@ -18,7 +18,7 @@ public class MainTree {
         QueueArray tokens = ShuntingYard.toPostfix(str);
         StackArray s = new StackArray(tokens.getSize());
         Tree tree=new Tree(tokens);
-        System.out.println("result : "+ tree.createTree().getRightSon().getLeftSon().getValue());
+        System.out.println("result : "+tree.createTree().getLeftSon().getRightSon().getRightSon().getRightSon().getValue());
 
     }
 }
