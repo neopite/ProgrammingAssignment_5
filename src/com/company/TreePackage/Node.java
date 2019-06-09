@@ -1,41 +1,52 @@
 package com.company.TreePackage;
 
+import java.util.ArrayList;
+
 public class Node<E> {
     private String value;
     private Node leftSon;
     private Node rightSon;
     private Node father;
 
-    Node(String value,E leftSon,E rightSon,E father){
-        this.value=value;
-        this.leftSon= (Node) leftSon;
-        this.rightSon= (Node) rightSon;
-        this.father= (Node) father;
+    Node(String value, E leftSon, E rightSon, E father) {
+        this.value = value;
+        this.leftSon = (Node) leftSon;
+        this.rightSon = (Node) rightSon;
+        this.father = (Node) father;
     }
-     void setLeftSon(Node node){
-        this.leftSon=node;
+
+    void setLeftSon(Node node) {
+        this.leftSon = node;
     }
-     void setRightSon(Node node){
-        this.rightSon=node;
+
+    void setRightSon(Node node) {
+        this.rightSon = node;
     }
-     void setFather(Node node){
-        this.father=node;
+
+    void setFather(Node node) {
+        this.father = node;
     }
-     Node getLeftSon(){
+
+    Node getLeftSon() {
         return this.leftSon;
     }
-     public Node getRightSon(){
+
+    public Node getRightSon() {
         return this.rightSon;
     }
-     Node getFather(){
+
+    Node getFather() {
         return this.father;
     }
-    String getValue(){
+
+    String getValue() {
         return this.value;
     }
-    public boolean isLeaf(Node node){
-        if(node.leftSon==null || node.rightSon==null){
+
+    public boolean isLeaf(Node node) {
+        if (node.leftSon == null && node.rightSon == null) {
             return true;
-        }else return false;
+        } else return false;
     }
+
 }

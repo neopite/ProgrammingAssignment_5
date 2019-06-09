@@ -1,20 +1,18 @@
 package com.company.TreePackage;
 
 import com.company.ShutingYard.QueueArray;
+import com.company.ShutingYard.ShuntingYard;
 import com.company.ShutingYard.StackArray;
 import com.company.ShutingYard.StringParser;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class Tree {
-    public QueueArray queueArray;
 
-    Tree(QueueArray queueArray) {
-        this.queueArray = queueArray;
-
-    }
-
-    public Node createTree() {
+    public Node createTree(QueueArray queueArray) {
         int frequency = 0;
         StackArray s = new StackArray(queueArray.getSize());
         Stack<Node> stack = new Stack<>();
@@ -40,13 +38,23 @@ public class Tree {
     }
 
     public String bypass(Node node) { //в параметр передаёться дерево(Дерево-Нода)
-        Node node1=node.getRightSon() ;
-        while (node1.getRightSon() != null) {
-            node1=node1.getLeftSon();
-            System.out.println(node1.getValue());
+        Node node1 = node.getLeftSon();
+        String str = "";
+        while (node1.getLeftSon() != null) {
+            node1 = node1.getLeftSon();
         }
+        /*while (true) {
+            Node nodeFather = node1.getFather();
+            Node rightSon = nodeFather.getRightSon();
+            str+=node1.getValue()+nodeFather.getValue()+rightSon.getValue();
+            QueueArray tokens = ShuntingYard.toPostfix(str);
+            StackArray s = new StackArray(tokens.getSize());
+            Tree tree=new Tree();
+        }
+        */
         return "True";
     }
+
 
 }
 
