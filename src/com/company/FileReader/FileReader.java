@@ -24,10 +24,60 @@ public class FileReader {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        FileReader fileReader = new FileReader();
-        fileReader.readFile(new File("/home/yarik/IdeaProjects/IntroToProg5Lab/src/com/company/FileReader/txt"));
+        String line="if(a>b)?(a=a+b):(b=b-a);";
+        FileReader fileReader=new FileReader();
+        System.out.println(fileReader.readCondition(line));
+        System.out.println(fileReader.readTrue(line));
+        System.out.println(fileReader.readFalse(line));
     }
     public HashMap<String, Double> returnHashMap(){
         return this.hashMap;
     }
+    public String readCondition(String line){
+        int first=0;
+        int last=0;
+        char [] chars = line.toCharArray();
+        for (int itter = 0; itter < chars.length; itter++) {
+            if(chars[itter] == '('){
+                first=itter;
+            }
+            if(chars[itter] == '?'){
+                last=itter;
+                break;
+            }
+        }
+        String str=line.substring(first+1,last-1);
+        return str;
+    }
+    public String readTrue(String line){
+        int first=0;
+        int last=0;
+        char [ ] chars=line.toCharArray();
+        for (int itter = 0; itter < chars.length; itter++) {
+            if(chars[itter]=='?'){
+                first=itter+2;
+            }
+            if(chars[itter]==':'){
+                last=itter-1;
+            }
+
+        }
+        return line.substring(first,last);
+    }
+    public String readFalse(String str){
+        int first=0;
+        int last=0;
+        char [] chars=str.toCharArray();
+        for (int itter = 0; itter < chars.length; itter++) {
+            if(chars[itter]==':'){
+                first=itter+2;
+            }
+            if(chars[itter]==';'){
+                last=itter-1;
+            }
+        }
+        return str.substring(first,last);
+    }
+
+
 }
