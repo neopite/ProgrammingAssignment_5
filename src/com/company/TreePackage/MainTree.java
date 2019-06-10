@@ -3,10 +3,13 @@ package com.company.TreePackage;
 import com.company.ShutingYard.QueueArray;
 import com.company.ShutingYard.ShuntingYard;
 import com.company.ShutingYard.StackArray;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class MainTree {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         String str;
         if (args.length == 0) {
@@ -18,6 +21,6 @@ public class MainTree {
         QueueArray tokens = ShuntingYard.toPostfix(str);
         StackArray s = new StackArray(tokens.getSize());
         Tree tree = new Tree();
-        System.out.println(tree.bypass(tree.createTree(tokens)));
+        tree.createASTWithCondition(new File("txt"));
     }
 }

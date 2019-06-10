@@ -9,11 +9,25 @@ public class FileReader {
     static public File file;
     static HashMap<String, Double> hashMap = new HashMap<>();
 
-    public void readFile(File file) throws FileNotFoundException {
+    public FileReader(String file){
+        this.file=new File("/home/yarik/IdeaProjects/IntroToProg5Lab/src/com/company/FileReader/"+file);
+    }
+   public FileReader(){
+
+   }
+
+    public String readFileAndReturnCondition() throws FileNotFoundException {
         Scanner read = new Scanner(new java.io.FileReader(file));
+        String condition="";
         while (read.hasNextLine()) {
-            initializationVariable(read.nextLine());
+            String line=read.nextLine();
+            if(isCondition(line)){
+                condition=line;
+            }else {
+                initializationVariable(line);
+            }
         }
+        return condition;
     }
 
     public void initializationVariable(String str) {
@@ -22,16 +36,18 @@ public class FileReader {
             hashMap.put(array[0], Double.parseDouble(array[2]));
         }
     }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        String line="if(a>b)?(a=a+b):(b=b-a);";
-        FileReader fileReader=new FileReader();
-        System.out.println(fileReader.readCondition(line));
-        System.out.println(fileReader.readTrue(line));
-        System.out.println(fileReader.readFalse(line));
-    }
     public HashMap<String, Double> returnHashMap(){
         return this.hashMap;
+    }
+    public boolean isCondition(String line){
+        char[] chars=line.toCharArray();
+        String ln="";
+        ln+=chars[0];
+        ln+=chars[1];
+        if(ln.equalsIgnoreCase("if")){
+            return true;
+        }
+        else return false;
     }
     public String readCondition(String line){
         int first=0;

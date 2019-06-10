@@ -1,6 +1,11 @@
 package com.company.TreePackage;
 
+import com.company.FileReader.ConditionParser;
+import com.company.FileReader.FileReader;
 import com.company.ShutingYard.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Stack;
 
 public class Tree {
@@ -122,6 +127,16 @@ public class Tree {
             }
         }
         return ((String) s.peek());
+    }
+    public void createASTWithCondition(File file) throws FileNotFoundException {
+        Node root=new Node("if",null,null,null);
+        FileReader fileReader=new FileReader("txt");
+        String condition=fileReader.readFileAndReturnCondition();
+        ConditionParser conditionParser=new ConditionParser(condition);
+        Node node=new Node(conditionParser.getSign(),conditionParser.getBeforeSign(),conditionParser.getAfterSign(),root);
+        root.setLeftSon(node);
+        Node rightSon=new Node("~",null,null,root);
+        root.setRightSon(rightSon);
     }
 }
 
