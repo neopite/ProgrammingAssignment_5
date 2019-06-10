@@ -65,7 +65,7 @@ public class StringParser {
 
     public static boolean isDigit(String s) {
         try {
-            Integer.parseInt(s);
+            Double.parseDouble(s);
             return true;
         } catch (NumberFormatException var2) {
             return false;
