@@ -21,6 +21,7 @@ public class MainTree {
         QueueArray tokens = ShuntingYard.toPostfix(str);
         StackArray s = new StackArray(tokens.getSize());
         Tree tree = new Tree();
-        tree.createASTWithCondition(new File("txt"));
+        //tree.createASTWithCondition(new File("txt"));
+        BTreePrinter.printNode(tree.createTree(tokens));
     }
 }

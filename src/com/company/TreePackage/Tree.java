@@ -6,10 +6,12 @@ import com.company.ShutingYard.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class Tree {
-
+    public int heightCounter = 0;
     public Node createTree(QueueArray queueArray) {
         Node generalNode = new Node();
         StackArray s = new StackArray(queueArray.getSize());
@@ -24,6 +26,7 @@ public class Tree {
             } else {
                 Node node = stack.pop();
                 Node node1 = stack.pop();
+                heightCounter++;
 
                 if (node.nodeSize(node) > node1.nodeSize(node1)) {
                     if (elem.equalsIgnoreCase("-") || elem.equalsIgnoreCase("/")) {
