@@ -11,7 +11,7 @@ public class FileReader {
     static HashMap<String, String> hashMap = new HashMap<>();
 
     public FileReader(String file){
-        this.file=new File("/home/yarik/IdeaProjects/IntroToProg5Lab/src/com/company/FileReader/"+file);
+        this.file=new File("/home/ivan/ProgrammingAssignment_5/src/com/company/FileReader/"+file);
     }
    public FileReader(){
 

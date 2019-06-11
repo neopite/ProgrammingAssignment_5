@@ -30,6 +30,7 @@ public class MainTree {
         ConditionParser conditionParser = new ConditionParser(fileReader.readCondition(fileReader.readFileAndReturnCondition()));
         conditionParser.initializationSigns();
         conditionParser.wholeCondiotion();
+        BTreePrinter.printNode(node);
         System.out.println(tree.calculateASTWithLetters(node, fileReader, conditionParser));
 
     }
