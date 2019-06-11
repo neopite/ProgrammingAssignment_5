@@ -27,6 +27,7 @@ public class Node<E> {
         this.swaped = bl;
     }
 
+
     void setLeftSon(Node node) {
         this.leftSon = node;
     }

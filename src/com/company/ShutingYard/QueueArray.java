@@ -42,7 +42,7 @@ public class QueueArray {
         for(int var3 = 0; var3 < var2; ++var3) {
             String elem = (String) var1[var3];
             if (elem != null) {
-                System.out.print(elem + " ");
+                System.out.print(elem + ", ");
             }
         }
 
