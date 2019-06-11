@@ -24,7 +24,7 @@ public class ShuntingYard {
     }
 
     private static boolean isHigerPrec(String op, String sub) {
-        return ops.containsKey(sub) && ((ShuntingYard.Operator)ops.get(sub)).precedence >= ((ShuntingYard.Operator)ops.get(op)).precedence;
+        return ops.containsKey(sub) && (ops.get(sub)).precedence >= (ops.get(op)).precedence;
     }
 
     public static QueueArray toPostfix(String str, FileReader fileReader) throws FileNotFoundException {
